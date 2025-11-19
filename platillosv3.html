@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Comida típica de Alemania</title>
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#111827;
+      --card2:#020617;
+      --accent:#fbbf24;
+      --accent-soft:rgba(251,191,36,0.15);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --radius:18px;
+      --maxw: 980px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: system-ui,-apple-system,"Segoe UI",Roboto,Inter,sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000 100%);
+      color:var(--text);
+    }
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:24px 16px 48px;
+    }
+
+    header{
+      text-align:center;
+      padding:28px 16px 24px;
+      margin-bottom:20px;
+      border-radius:24px;
+      background:linear-gradient(135deg,#1f2937,#020617);
+      box-shadow:0 18px 45px rgba(0,0,0,0.7);
+      border:1px solid rgba(148,163,184,0.25);
+    }
+    header h1{
+      font-size:2rem;
+      letter-spacing:.04em;
+    }
+    header .highlight{
+      color:var(--accent);
+      font-weight:700;
+    }
+    header p{
+      margin-top:10px;
+      font-size:.98rem;
+      color:var(--muted);
+    }
+    header .tag{
+      display:inline-block;
+      margin-top:14px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--accent-soft);
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .intro{
+      margin:26px 0 20px;
+      padding:20px 18px;
+      border-radius:var(--radius);
+      background:rgba(15,23,42,0.95);
+      border:1px solid rgba(148,163,184,0.25);
+    }
+    .intro h2{
+      font-size:1.2rem;
+      margin-bottom:8px;
+      color:var(--accent);
+    }
+    .intro p{
+      font-size:.95rem;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .dish{
+      background:linear-gradient(145deg,var(--card),var(--card2));
+      border-radius:var(--radius);
+      padding:16px 16px 18px;
+      border:1px solid rgba(31,41,55,0.9);
+      box-shadow:0 14px 25px rgba(0,0,0,0.65);
+      position:relative;
+      overflow:hidden;
+    }
+    .dish::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at top,var(--accent-soft) 0,transparent 55%);
+      opacity:.7;
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+    }
+
+    .dish-img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:14px;
+      margin-bottom:10px;
+      display:block;
+      position:relative;
+      z-index:1;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:3px 9px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(55,65,81,0.8);
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--muted);
+      margin-bottom:6px;
+      position:relative;
+      z-index:1;
+    }
+    .pill span.dot{
+      width:6px;height:6px;border-radius:999px;
+      background:var(--accent);
+    }
+    .dish h3{
+      font-size:1.1rem;
+      margin-bottom:4px;
+      color:var(--text);
+      position:relative;z-index:1;
+    }
+    .dish .origin{
+      font-size:.82rem;
+      color:var(--muted);
+      margin-bottom:8px;
+      position:relative;z-index:1;
+    }
+    .dish p{
+      font-size:.9rem;
+      color:var(--muted);
+      line-height:1.6;
+      position:relative;z-index:1;
+    }
+
+    .facts{
+      margin-top:10px;
+      padding-top:10px;
+      border-top:1px solid rgba(55,65,81,0.8);
+      font-size:.82rem;
+      color:var(--muted);
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px 12px;
+      position:relative;z-index:1;
+    }
+    .facts strong{color:var(--accent);font-weight:600}
+
+    .subtitle{
+      margin-top:26px;
+      font-size:1.2rem;
+      color:var(--accent);
+    }
+
+    .list{
+      margin-top:10px;
+      padding:14px 14px 10px;
+      border-radius:var(--radius);
+      background:rgba(15,23,42,0.95);
+      border:1px dashed rgba(148,163,184,0.4);
+      font-size:.9rem;
+      color:var(--muted);
+    }
+    .list ul{
+      margin:8px 0 0 16px;
+      padding-left:4px;
+    }
+    .list li{
+      margin-bottom:4px;
+    }
+
+    @media (min-width:768px){
+      header h1{font-size:2.4rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1><span class="highlight">Comida típica de Alemania</span></h1>
+      <p>Un vistazo rápido a algunos de los platillos más representativos de la gastronomía alemana.</p>
+      <span class="tag">Cultura · Gastronomía europea</span>
+    </header>
+
+    <section class="intro">
+      <h2>¿Por qué es importante la comida en la cultura alemana?</h2>
+      <p>
+        La cocina alemana tradicional se caracteriza por ser <strong>contundente, casera y muy
+        regional</strong>. Aunque se asocia mucho con salchichas y cerveza, también incluye guisos
+        de carne, papas, pan recién horneado y postres con frutas. Cada región aporta sus propias
+        recetas, ingredientes y formas de preparación.
+      </p>
+    </section>
+
+    <main>
+      <h2 class="subtitle">Platillos representativos</h2>
+
+      <div class="grid">
+        <!-- Bratwurst (A1) -->
+        <article class="dish">
+          <img src="img/A1.jpg" alt="Plato de Bratwurst alemana" class="dish-img">
+          <div class="pill"><span class="dot"></span> Plato principal</div>
+          <h3>Bratwurst</h3>
+          <p class="origin">Salchicha asada típica alemana.</p>
+          <p>
+            Es una salchicha elaborada principalmente con carne de cerdo (a veces mezclada con
+            ternera o res). Normalmente se sirve <strong>asada a la parrilla</strong> y se
+            acompaña con pan, mostaza y, en ocasiones, chucrut.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> en ferias, mercados y puestos callejeros.</span>
+            <span><strong>Dato:</strong> cada región tiene su versión con tamaño y sazón diferentes.</span>
+          </div>
+        </article>
+
+        <!-- Sauerkraut (A2) -->
+        <article class="dish">
+          <img src="img/A2.jpg" alt="Plato de Sauerkraut con papas" class="dish-img">
+          <div class="pill"><span class="dot"></span> Acompañamiento</div>
+          <h3>Sauerkraut con papas</h3>
+          <p class="origin">Repollo fermentado con guarnición de papa.</p>
+          <p>
+            El <strong>Sauerkraut</strong> es col blanca finamente picada y fermentada, lo que
+            le da un sabor ácido muy característico. Se suele servir caliente junto con papas hervidas
+            o en puré y alguna carne, como salchichas o cerdo.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> como guarnición clásica.</span>
+            <span><strong>Dato:</strong> la fermentación ayuda a conservar el alimento y aporta probióticos.</span>
+          </div>
+        </article>
+
+        <!-- Schnitzel (A3) -->
+        <article class="dish">
+          <img src="img/A3.jpg" alt="Schnitzel empanizado y frito" class="dish-img">
+          <div class="pill"><span class="dot"></span> Plato principal</div>
+          <h3>Schnitzel</h3>
+          <p class="origin">Filete empanizado y frito.</p>
+          <p>
+            Consiste en un filete delgado (generalmente de cerdo o ternera) empanizado y frito
+            hasta quedar crujiente. Se sirve con papas fritas, ensalada o puré de papas, y es un
+            platillo muy popular en restaurantes y hogares.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> como comida fuerte del día.</span>
+            <span><strong>Dato:</strong> aunque es famoso en Austria, también es muy común en Alemania.</span>
+          </div>
+        </article>
+
+        <!-- Brezel (A4) -->
+        <article class="dish">
+          <img src="img/A4.jpg" alt="Brezel o Pretzel tradicional" class="dish-img">
+          <div class="pill"><span class="dot"></span> Pan tradicional</div>
+          <h3>Brezel (Pretzel)</h3>
+          <p class="origin">Pan en forma de lazo con costra dorada.</p>
+          <p>
+            Es un pan suave con una corteza ligeramente crujiente y un toque salado en la superficie.
+            Es típico de la región de Baviera y suele acompañar la cerveza o servirse como snack
+            en festivales.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> en Oktoberfest, panaderías y bares.</span>
+            <span><strong>Dato:</strong> su forma de lazo es un símbolo muy reconocido de Alemania.</span>
+          </div>
+        </article>
+
+        <!-- Currywurst (A5) -->
+        <article class="dish">
+          <img src="img/A5.jpg" alt="Currywurst con salsa de curry" class="dish-img">
+          <div class="pill"><span class="dot"></span> Comida rápida</div>
+          <h3>Currywurst</h3>
+          <p class="origin">Salchicha con salsa de curry y tomate.</p>
+          <p>
+            La Currywurst es una salchicha cortada en trozos y bañada con una salsa a base de
+            <strong>kétchup y curry en polvo</strong>. Es uno de los platillos callejeros más
+            populares de Alemania, especialmente en Berlín.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> como comida rápida, sola o con papas fritas.</span>
+            <span><strong>Dato:</strong> existen puestos dedicados casi exclusivamente a vender Currywurst.</span>
+          </div>
+        </article>
+
+        <!-- Kartoffelsalat (A6) -->
+        <article class="dish">
+          <img src="img/A6.jpg" alt="Ensalada de papa Kartoffelsalat" class="dish-img">
+          <div class="pill"><span class="dot"></span> Ensalada</div>
+          <h3>Kartoffelsalat</h3>
+          <p class="origin">Ensalada de papa al estilo alemán.</p>
+          <p>
+            Esta ensalada se prepara con papas cocidas, cebolla y aderezos que pueden variar:
+            algunas versiones llevan <strong>vinagre y aceite</strong>, y otras se preparan con
+            <strong>mayonesa</strong>. Es un acompañamiento típico de carnes y salchichas.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> en comidas familiares, picnics y fiestas.</span>
+            <span><strong>Dato:</strong> cada familia suele tener su receta propia de Kartoffelsalat.</span>
+          </div>
+        </article>
+
+        <!-- Rouladen (A7) -->
+        <article class="dish">
+          <img src="img/A7.jpg" alt="Rouladen, rollos de carne rellenos" class="dish-img">
+          <div class="pill"><span class="dot"></span> Guiso</div>
+          <h3>Rouladen</h3>
+          <p class="origin">Rollos de carne rellenos.</p>
+          <p>
+            Los Rouladen son láminas de carne de res enrolladas y rellenas de <strong>tocino,
+            pepinillos, mostaza y cebolla</strong>. Se cocinan lentamente en salsa hasta quedar
+            muy suaves y jugosos.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> como platillo principal en comidas especiales.</span>
+            <span><strong>Dato:</strong> se suele acompañar con papas y col roja.</span>
+          </div>
+        </article>
+      </div>
+
+      <h2 class="subtitle">Postres y dulces</h2>
+
+      <div class="grid">
+        <!-- Pastel Selva Negra (B1) -->
+        <article class="dish">
+          <img src="img/B1.jpg" alt="Pastel Selva Negra con cerezas" class="dish-img">
+          <div class="pill"><span class="dot"></span> Postre</div>
+          <h3>Pastel Selva Negra</h3>
+          <p class="origin">Schwarzwälder Kirschtorte.</p>
+          <p>
+            Es un pastel de capas de <strong>bizcocho de chocolate, crema batida y cerezas</strong>.
+            Generalmente lleva un poco de licor de cereza y se decora con virutas de chocolate.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> en celebraciones y cafeterías.</span>
+            <span><strong>Dato:</strong> recibe su nombre de la región de la Selva Negra (Schwarzwald).</span>
+          </div>
+        </article>
+
+        <!-- Apfelstrudel (B2) -->
+        <article class="dish">
+          <img src="img/B2.jpg" alt="Apfelstrudel de manzana" class="dish-img">
+          <div class="pill"><span class="dot"></span> Postre</div>
+          <h3>Apfelstrudel</h3>
+          <p class="origin">Strudel de manzana.</p>
+          <p>
+            Es un rollo de masa muy fina relleno de manzana, canela, azúcar y a veces nueces o pasas.
+            Se sirve caliente y muchas veces acompañado de helado o salsa de vainilla.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> como postre o merienda.</span>
+            <span><strong>Dato:</strong> es típico de la zona de habla alemana, incluyendo Austria.</span>
+          </div>
+        </article>
+
+        <!-- Lebkuchen (B3) -->
+        <article class="dish">
+          <img src="img/B3.jpg" alt="Galletas Lebkuchen navideñas" class="dish-img">
+          <div class="pill"><span class="dot"></span> Dulce navideño</div>
+          <h3>Lebkuchen</h3>
+          <p class="origin">Galletas de especias típicas de Navidad.</p>
+          <p>
+            Los Lebkuchen son galletas suaves preparadas con miel, frutos secos y una mezcla de
+            especias como canela, clavo y nuez moscada. Son muy tradicionales durante el
+            <strong>Adviento y la Navidad</strong> en Alemania.
+          </p>
+          <div class="facts">
+            <span><strong>Se come:</strong> en mercados navideños y en casa con café o té.</span>
+            <span><strong>Dato:</strong> algunas versiones se cubren con chocolate o glaseado de azúcar.</span>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
